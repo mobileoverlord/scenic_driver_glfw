@@ -15,17 +15,7 @@ ifeq ($(MIX_ENV),dev)
 	CFLAGS += -g
 endif
 
-ifneq ($(OS),Windows_NT)
-	CFLAGS += -fPIC
-
-	ifeq ($(shell uname),Darwin)
-		LDFLAGS += -framework Cocoa -framework OpenGL -Wno-deprecated
-	else
-	  LDFLAGS += -lGLESv2 -lm -lrt -ldl -lglfw -lEGL
-	endif
-endif
-
-
+LDFLAGS += -lGLESv2 -lm -lrt -ldl -lglfw -lEGL
 
 .PHONY: all clean
 
